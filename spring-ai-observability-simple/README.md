@@ -3,7 +3,7 @@
 ## Pre-requisites
 
 This example is based on an experimental proposal. You need to build that version of Spring AI locally to make
-this application work. Check out the `` branch of the Spring AI repository and publish the packages to your local Maven
+this application work. Check out the code from [this PR branch](https://github.com/spring-projects/spring-ai/pull/954) of the Spring AI repository and publish the packages to your local Maven
 repository by running the following command.
 
 ```shell

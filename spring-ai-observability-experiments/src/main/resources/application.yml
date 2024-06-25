@@ -20,6 +20,10 @@ management:
   otlp:
     tracing:
       endpoint: http://localhost:4318/v1/traces
+  observations:
+    enable:
+      http.client.requests: false
+      http.server.requests: false
 
 demo:
   spring:
