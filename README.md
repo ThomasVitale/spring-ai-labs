@@ -1,1 +1,1 @@
-# spring-ai-labs
+# Spring AI Labs
