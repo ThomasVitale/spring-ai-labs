@@ -2,15 +2,26 @@ spring:
   application:
     name: spring-ai-observability
   ai:
-    observations:
-      include-completion: true
-      include-prompt: true
+    chat:
+      observations:
+        include-completion: true
+        include-prompt: true
+    image:
+      observations:
+        include-generation: true
+        include-prompt: true
     openai:
       api-key: ${OPENAI_API_KEY}
       chat:
         options:
           model: gpt-3.5-turbo
           temperature: 0.7
+      embedding:
+        options:
+          model: text-embedding-ada-002
+      image:
+        options:
+          model: dall-e-3
 
 management:
   endpoints:

@@ -33,8 +33,10 @@ In Grafana, you can query the traces from the "Explore" page, selecting the "Tem
 
 ## Calling the application
 
-You can now call the application that will use OpenAI to generate text based on a default prompt.
+You can now call the application that will use OpenAI to perform generative AI operations.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
+
+### Chat
 
 ```shell
 http :8080/chat
@@ -56,4 +58,40 @@ The next request is configured with Open AI-specific customizations.
 
 ```shell
 http :8080/chat/openai-options message=="What can you see beyond what you can see? Give a short answer."
+```
+
+### Embedding
+
+```shell
+http :8080/embed
+```
+
+Try passing your custom prompt and check the result.
+
+```shell
+http :8080/embed message=="The capital of Italy is Rome"
+```
+
+The next request is configured with OpenAI-specific customizations.
+
+```shell
+http :8080/embed/openai-options message=="The capital of Italy is Rome"
+```
+
+### Image
+
+```shell
+http :8080/image
+```
+
+Try passing your custom prompt and check the result.
+
+```shell
+http :8080/image message=="Yellow Submarine"
+```
+
+The next request is configured with Open AI-specific customizations.
+
+```shell
+http :8080/image/openai-options message=="Here comes the sun"
 ```
