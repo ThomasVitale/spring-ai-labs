@@ -60,6 +60,12 @@ The next request is configured with Open AI-specific customizations.
 http :8080/chat/openai-options message=="What can you see beyond what you can see? Give a short answer."
 ```
 
+Finally, try a request which uses function calling.
+
+```shell
+http :8080/chat/functions authorName=="Philip Pullman"
+```
+
 ### Embedding
 
 ```shell

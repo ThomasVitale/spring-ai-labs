@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Set;
+
 @RestController
 class ChatController {
 
@@ -36,6 +38,17 @@ class ChatController {
                         .withModel("gpt-4o")
                         .withUser("jon.snow")
                         .withFrequencyPenalty(1.3f)
+                        .build()))
+                .getResult().getOutput().getContent();
+    }
+
+    @GetMapping("/chat/functions")
+    String chatWithFunctions(@RequestParam(defaultValue = "Philip Pullman") String author) {
+        return chatModel.call(new Prompt("What books written by %s are available to read and what is their bestseller?".formatted(author),
+                        OpenAiChatOptions.builder()
+                        .withModel("gpt-4o")
+                        .withTemperature(0.3f)
+                        .withFunctions(Set.of("booksByAuthor", "bestsellerBookByAuthor"))
                         .build()))
                 .getResult().getOutput().getContent();
     }
