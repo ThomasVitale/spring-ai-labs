@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -35,9 +36,14 @@ class ChatController {
     @GetMapping("/chat/openai-options")
     String chatWithOpenAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatModel.call(new Prompt(message, OpenAiChatOptions.builder()
-                        .withModel("gpt-4o")
-                        .withUser("jon.snow")
+                        .withModel("gpt-4o-mini")
                         .withFrequencyPenalty(1.3f)
+                        .withMaxTokens(1500)
+                        .withPresencePenalty(1.0f)
+                        .withStop(List.of("this-is-the-end", "addio"))
+                        .withTemperature(0.7f)
+                        .withTopP(0f)
+                        .withUser("jon.snow")
                         .build()))
                 .getResult().getOutput().getContent();
     }

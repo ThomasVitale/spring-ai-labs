@@ -28,7 +28,8 @@ class EmbeddingController {
     String embedWithOpenAiOptions(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(message), OpenAiEmbeddingOptions.builder()
                         .withModel("text-embedding-3-small")
-                        .withUser("jon.snow")
+                        .withDimensions(1536)
+                        .withEncodingFormat("float")
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.size();

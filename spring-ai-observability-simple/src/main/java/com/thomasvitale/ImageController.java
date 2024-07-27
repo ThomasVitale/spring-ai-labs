@@ -30,6 +30,7 @@ class ImageController {
                 .withHeight(1024)
                 .withWidth(1024)
                 .withModel(OpenAiImageApi.ImageModel.DALL_E_3.getValue())
+                .withResponseFormat("url")
                 .build()));
         return imageResponse.getResult().getOutput().getUrl();
     }

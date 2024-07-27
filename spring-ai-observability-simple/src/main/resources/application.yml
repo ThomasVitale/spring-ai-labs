@@ -8,7 +8,6 @@ spring:
         include-prompt: true
     image:
       observations:
-        include-generation: true
         include-prompt: true
     openai:
       api-key: ${OPENAI_API_KEY}
