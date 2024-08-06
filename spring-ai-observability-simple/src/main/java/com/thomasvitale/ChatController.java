@@ -1,5 +1,7 @@
 package com.thomasvitale;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -14,6 +16,8 @@ import java.util.Set;
 @RestController
 class ChatController {
 
+    private final Logger logger = LoggerFactory.getLogger(ChatController.class);
+
     private final ChatModel chatModel;
 
     ChatController(ChatModel chatModel) {
@@ -22,6 +26,7 @@ class ChatController {
 
     @GetMapping("/chat")
     String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
+        logger.info(message);
         return chatModel.call(message);
     }
 
